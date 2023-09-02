@@ -1,0 +1,100 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+  background: transparent;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 150%;
+}
+
+:root {
+  --linear-gradient: hsl(249, 99%, 64%);
+  --linear-gradient-active: hsl(278, 94%, 30%);
+  --red: hsl(0, 100%, 66%);
+  --white: hsl(0, 0%, 100%);
+  --dark-grayish-violet: hsl(279, 6%, 55%);
+  --very-dark-violet: hsl(278, 68%, 11%);
+}
+
+/* ******************************************* */
+
+.container {
+  padding: 100px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cards {
+}
+
+.card {
+  .card__content {
+  }
+}
+
+.card_front {
+  background-image: url(/images/bg-card-front.png);
+}
+
+.card_back {
+  background-image: url(/images/bg-card-back.png);
+}
+
+.card_face,
+.card_back {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon {
+}
+
+.number-card {
+}
+
+.owner-card {
+}
+
+.date {
+}
+
+.card-cvc {
+}
+
+.form {
+  .form__content {
+  }
+
+  .form__label {
+  }
+
+  .form__input {
+  }
+}
+
+.cardholder-name {
+}
+
+.card-number {
+}
+
+.exp-date {
+}
+
+.cvc {
+}
