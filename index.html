@@ -32,9 +32,15 @@
                   <p class="date">00/00</p>
                 </div>
               </div>
+              <div class="bg-card-front">
+                <img src="/images/bg-card-front.png" alt="Card" />
+              </div>
             </div>
             <div class="card card_back">
               <p class="card-cvc">000</p>
+              <div class="bg-card-back">
+                <img src="/images/bg-card-back.png" alt="Card" />
+              </div>
             </div>
           </div>
         </div>
@@ -42,35 +48,46 @@
           <form action="#" class="form">
             <div class="form__content">
               <div class="cardholder-name">
-                <label for="name" class="form__label">Cardholder Name</label>
+                <label for="name" class="cardholder-name__label"
+                  >Cardholder Name</label
+                >
                 <input
                   type="text"
                   id="name"
                   placeholder="e.g. Jane Appleseed"
-                  class="form__input"
+                  class="cardholder-name__input"
                 />
               </div>
               <div class="card-number">
-                <label for="number" class="form__label">Card Number</label>
+                <label for="number" class="card-number__label"
+                  >Card Number</label
+                >
                 <input
                   type="text"
                   id="number"
                   placeholder="e.g. 1234 5678 9123 0000"
-                  class="form__input"
+                  class="card-number__input"
                 />
               </div>
-              <div>
+              <div class="info-card">
                 <div class="exp-date">
-                  <label for="#" class="form__label">Exp. Date (MM/YY) </label>
-                  <input type="text" placeholder="MM" />
-                  <input type="text" placeholder="YY" />
+                  <label for="#" class="exp-date__label"
+                    >Exp. Date (MM/YY)
+                  </label>
+                  <input type="text" class="exp-date__input" placeholder="MM" />
+                  <input type="text" class="exp-date__input" placeholder="YY" />
                 </div>
                 <div class="cvc">
-                  <label for="cvc">CVC</label>
-                  <input type="text" id="cvc" placeholder="e.g. 123" />
+                  <label for="cvc" class="cvc__label">CVC</label>
+                  <input
+                    class="cvc__input"
+                    type="text"
+                    id="cvc"
+                    placeholder="e.g. 123"
+                  />
                 </div>
               </div>
-              <button type="submit">Confirm</button>
+              <button class="form__button" type="submit">Confirm</button>
             </div>
           </form>
         </div>
