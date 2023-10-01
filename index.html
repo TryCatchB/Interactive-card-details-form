@@ -29,7 +29,9 @@
                 <p class="number-card">0000 0000 0000 0000</p>
                 <div class="card-data">
                   <p class="owner-card">Jane Appleseed</p>
-                  <p class="date">00/00</p>
+                  <p class="date">
+                    <span id="m">00</span>/<span id="y">00</span>
+                  </p>
                 </div>
               </div>
               <div class="bg-card-front">
@@ -44,7 +46,7 @@
             </div>
           </div>
         </div>
-        <div class="form">
+        <div>
           <form action="#" class="form">
             <div class="form__content">
               <div class="cardholder-name">
@@ -74,8 +76,18 @@
                   <label for="#" class="exp-date__label"
                     >Exp. Date (MM/YY)
                   </label>
-                  <input type="text" class="exp-date__input" placeholder="MM" />
-                  <input type="text" class="exp-date__input" placeholder="YY" />
+                  <input
+                    id="month"
+                    type="text"
+                    class="exp-date__input"
+                    placeholder="MM"
+                  />
+                  <input
+                    id="year"
+                    type="text"
+                    class="exp-date__input"
+                    placeholder="YY"
+                  />
                 </div>
                 <div class="cvc">
                   <label for="cvc" class="cvc__label">CVC</label>
@@ -87,7 +99,7 @@
                   />
                 </div>
               </div>
-              <button class="form__button" type="submit">Confirm</button>
+              <button class="button" type="submit">Confirm</button>
             </div>
           </form>
           <div class="complete">
@@ -99,12 +111,13 @@
               />
               <p class="complete__congratulation">Thank you!</p>
               <p class="complete__text">We've added your card details</p>
+              <button class="button" type="submit">Continue</button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <script src="app.js"></script>
+    <script type="module" src="JS/app.js"></script>
   </body>
 </html>
