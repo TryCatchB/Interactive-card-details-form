@@ -37,6 +37,14 @@ input:hover {
 
 .container {
   position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 30.1875rem;
+    height: 100%;
+    background-image: url("/images/bg-main-desktop.png");
+    background-repeat: no-repeat;
+  }
 }
 
 .content {
@@ -273,17 +281,6 @@ input:hover {
 /* MOBILE */
 
 @media (min-width: 767px) {
-  .container {
-    &::before {
-      content: "";
-      position: absolute;
-      width: 30.1875rem;
-      height: 100%;
-      background-image: url("/images/bg-main-desktop.png");
-      background-repeat: no-repeat;
-    }
-  }
-
   .card_front {
     &:not(:last-child) {
       margin-bottom: 1.875rem;
@@ -299,17 +296,6 @@ input:hover {
 }
 
 @media (max-width: 767px) {
-  .container {
-    &::before {
-      content: "";
-      position: absolute;
-      width: 23.4375rem;
-      height: 100%;
-      background-image: url("/images/bg-main-mobile.png");
-      background-repeat: no-repeat;
-    }
-  }
-
   .content {
     gap: 7.5rem;
     flex-direction: column;
