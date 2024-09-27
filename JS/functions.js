@@ -1,81 +1,100 @@
-export function addUserName() {
-  const $cardHolderName = document.querySelector(".cardholder-name");
-  const $userName = $cardHolderName.querySelector("input").value;
-
-  if ($userName) {
-    const $ownerCard = document.querySelector(".owner-card");
-    $ownerCard.textContent = $userName;
-  } else {
-    addErrorClassAndMessage($cardHolderName);
+function updateElementText(selector, value) {
+  const element = document.querySelector(selector);
+  if (element) {
+    element.textContent = value;
   }
 }
 
-export function addUserCardNumber() {
-  const $cardNumber = document.querySelector(".card-number");
-  const $userCardNumber = $cardNumber.querySelector("input").value;
-  const regExp = /([0-9]{4}\s){3}[0-9]{4}/g;
-
-  if (regExp.test($userCardNumber)) {
-    const $numberCard = document.querySelector(".number-card");
-    $numberCard.textContent = $userCardNumber;
-  } else if ($userCardNumber === "") {
-    addErrorClassAndMessage($cardNumber);
-  } else {
-    addErrorClassAndMessage($cardNumber);
-  }
-}
-
-export function addMonth() {
-  const $expDate = document.querySelector(".exp-date");
-  const month = $expDate.querySelector("#month").value;
-  const regExp2 = /[0-9]{2}/g;
-
-  if (regExp2.test(month)) {
-    const $m = document.querySelector("#m");
-    $m.textContent = month;
-  } else {
-    addErrorClassAndMessage($expDate);
-  }
-}
-
-export function addYear() {
-  const $expDate = document.querySelector(".exp-date");
-  const $year = $expDate.querySelector("#year").value;
-
-  if ($year) {
-    const y = document.querySelector("#y");
-    y.textContent = $year;
-  } else {
-    addErrorClassAndMessage($expDate);
-  }
-}
-
-export function addCvcAndShowThanksGivingWindow() {
-  const $cvc = document.querySelector(".cvc");
-  const $userCvc = $cvc.querySelector("input").value;
-
-  if ($userCvc) {
-    const $cardCvc = document.querySelector(".card-cvc");
-    $cardCvc.textContent = $userCvc;
-
-    const $form = document.querySelector(".form");
-    $form.classList.add("none");
-
-    const $complete = document.querySelector(".complete");
-    $complete.classList.add("show");
-  } else {
-    addErrorClassAndMessage($cvc);
-  }
-}
-
-function addErrorClassAndMessage(DOMelement) {
+function addErrorClassAndMessage(DOMelement, message = "Can't be blank") {
   const $input = DOMelement.querySelector("input");
   $input.classList.add("error-input");
 
-  if (!DOMelement.querySelector("p")) {
+  // Avoid duplicate error messages
+  if (!DOMelement.querySelector(".error-text")) {
     DOMelement.insertAdjacentHTML(
       "beforeend",
-      `<p class="error-text">Can't be blank</p>`
+      `<p class="error-text">${message}</p>`
     );
   }
+}
+
+function getInputValue(selector) {
+  const inputElement = document.querySelector(selector);
+  return inputElement ? inputElement.value.trim() : "";
+}
+
+export function addUserName() {
+  const userName = getInputValue(".cardholder-name input");
+
+  const data = {
+    value: userName,
+    condition: userName,
+    targetSelector: ".owner-card",
+    errorSelector: ".cardholder-name",
+  };
+
+  validateAndUpdate(data);
+}
+
+export function addUserCardNumber() {
+  const cardNumber = getInputValue(".card-number input");
+  const regExp = /^([0-9]{4}\s){3}[0-9]{4}$/;
+
+  const data = {
+    value: cardNumber,
+    condition: regExp.test(cardNumber),
+    targetSelector: ".number-card",
+    errorSelector: ".card-number",
+  };
+
+  validateAndUpdate(data);
+}
+
+export function addMonth() {
+  const month = getInputValue("#month");
+  const regExp = /^[0-9]{2}$/;
+
+  const data = {
+    value: month,
+    condition: regExp.test(month),
+    targetSelector: "#m",
+    errorSelector: ".exp-date",
+  };
+
+  validateAndUpdate(data);
+}
+
+export function addYear() {
+  const year = getInputValue("#year");
+
+  const data = {
+    value: year,
+    condition: year,
+    targetSelector: "#y",
+    errorSelector: ".exp-date",
+  };
+
+  validateAndUpdate(data);
+}
+
+export function addCvcAndShowThanksGivingWindow() {
+  const cvc = getInputValue(".cvc input");
+
+  if (cvc) {
+    updateElementText(".card-cvc", cvc);
+
+    // Hide form and show "Thanks" message
+    document.querySelector(".form").classList.add("none");
+    document.querySelector(".complete").classList.add("show");
+  } else {
+    addErrorClassAndMessage(document.querySelector(".cvc"));
+  }
+}
+
+function validateAndUpdate(data) {
+  const { value, condition, targetSelector, errorSelector } = data;
+
+  condition
+    ? updateElementText(targetSelector, value)
+    : addErrorClassAndMessage(document.querySelector(errorSelector));
 }

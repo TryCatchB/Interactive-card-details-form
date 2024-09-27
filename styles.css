@@ -73,7 +73,7 @@ input:hover {
   }
 }
 
-.card_front {
+.card_card-frontfront {
   position: relative;
 }
 
@@ -95,7 +95,7 @@ input:hover {
   text-transform: uppercase;
 }
 
-.card_back {
+.card-back {
   position: absolute;
   right: -5.25rem;
 }
@@ -123,6 +123,7 @@ input:hover {
 .info-card {
   display: flex;
   gap: 0.9375rem;
+
   &:not(:last-child) {
     margin-bottom: 0.9375rem;
   }
@@ -146,6 +147,7 @@ input:hover {
 
 .complete {
   display: none;
+
   .complete__content {
     display: flex;
     align-items: center;
@@ -178,30 +180,23 @@ input:hover {
   }
 }
 
-.cardholder-name__input,
-.card-number__input {
+:is(.cardholder-name__input, .card-number__input) {
   width: 100%;
 }
 
-.bg-card-front,
-.bg-card-back {
+:is(.bg-card-front, .bg-card-back) {
   & img {
     max-width: 100%;
     object-fit: cover;
   }
 }
 
-.date,
-.owner-card,
-.number-card {
+:is(.date, .owner-card, .number-card) {
   letter-spacing: 0.125rem;
   color: var(--white);
 }
 
-.cardholder-name__input,
-.card-number__input,
-.exp-date__input,
-.cvc__input {
+:is(.cardholder-name__input, .card-number__input, .exp-date__input, .cvc__input) {
   border: 0.0625rem solid var(--dark-grayish-violet);
   border-radius: 0.4375rem;
   padding: 0.625rem;
@@ -211,10 +206,7 @@ input:hover {
   }
 }
 
-.cardholder-name__label,
-.card-number__label,
-.exp-date__label,
-.cvc__label {
+:is(.cardholder-name__label, .card-number__label, .exp-date__label, .cvc__label) {
   display: block;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -232,7 +224,9 @@ input:hover {
 }
 
 .show {
+  position: relative;
   display: flex;
+  z-index: 1;
 }
 
 .none {
@@ -264,8 +258,7 @@ input:hover {
     margin-bottom: 1.5625rem;
   }
 
-  .owner-card,
-  .date {
+  :is(.owner-card, .date) {
     font-size: 0.5rem;
   }
 }
@@ -281,7 +274,7 @@ input:hover {
 /* MOBILE */
 
 @media (min-width: 767px) {
-  .card_front {
+  .card-front {
     &:not(:last-child) {
       margin-bottom: 1.875rem;
     }
@@ -301,6 +294,17 @@ input:hover {
     flex-direction: column;
   }
 
+  .complete {
+    :is(.complete__congratulation, .complete__text) {
+      color: var(--white);
+    }
+  }
+
+  .button {
+    color: var(--very-dark-violet);
+    background-color: var(--white);
+  }
+
   .cards {
     top: 5.3125rem;
     left: -0.9375rem;
@@ -312,7 +316,7 @@ input:hover {
     flex-direction: column-reverse;
   }
 
-  .card_front {
+  .card-front {
     z-index: 2;
   }
 
@@ -330,16 +334,19 @@ input:hover {
     top: 39.8%;
   }
 
-  .bg-card-front,
-  .bg-card-back {
+  :is(.bg-card-front, .bg-card-back) {
     & img {
       max-width: 18.125rem;
       object-fit: cover;
     }
   }
 
-  .card_back {
+  .card-back {
     bottom: 5.5625rem;
     right: -2.9375rem;
+  }
+
+  :is(.cardholder-name__label, .card-number__label, .exp-date__label, .cvc__label) {
+    color: var(--white);
   }
 }

@@ -6,17 +6,13 @@ import {
   addCvcAndShowThanksGivingWindow,
 } from "./functions.js";
 
-const $btn = document.querySelector(".button");
-
-$btn.addEventListener("click", (event) => {
+document.querySelector(".button").addEventListener("click", (event) => {
   event.preventDefault();
 
+  // Run all field validation and value setting
   addUserName();
-
   addUserCardNumber();
-
   addMonth();
   addYear();
-
   addCvcAndShowThanksGivingWindow();
 });
